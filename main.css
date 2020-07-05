@@ -1,0 +1,70 @@
+body{
+    background-image: url("fondo1.png");
+    background-size: cover;
+}
+h1{
+    background-color: red;
+    text-align:center
+}
+h2{
+    text-align:center
+}
+#lista-pokemones{
+    width: 30%;
+    float: left;
+    max-height: 400px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    position: relative;
+    left: 50px;
+}
+#foto-pokemon{
+    width: 358px;
+    height: 358px;
+    position: relative;
+    bottom: 300px;
+    right: 46px;
+    border: rgb(189, 72, 72);
+    border-style: solid;
+}
+.oculto{
+    display: none;
+}
+#tablaInformacionPokemones{
+    background-color: white;
+    margin-left: 430px;
+    margin-right: 50px;
+    border: black;
+    border-style: solid;
+    position: relative;
+    transform: scale(0.7);
+    bottom: 135px
+}
+#imagen-personaje{
+    width: 500px;
+    height: 400px;
+}
+.resultadoDatos{
+    margin-left: 431px;
+    position: relative;
+    bottom: 204px;
+    transform: scale(1.7);
+}
+.datos{
+    position: relative;
+    left: 53px;
+    top: 32px;
+}
+#pokemones-next{
+    position: relative;
+    left: 65px;
+}
+#pokemones-prev{
+    position: relative;
+    left: 50px;
+}
+.tipos{
+    position: relative;
+    left: 78px;
+    bottom: 24px;
+}
