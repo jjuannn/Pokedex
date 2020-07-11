@@ -15,5 +15,4 @@ botonNext.addEventListener( "click", () => {
     obtenerNuevosPokemones()
 })
 
-
 obtenerInfoPokemones()
