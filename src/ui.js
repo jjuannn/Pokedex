@@ -15,7 +15,6 @@ export function obtenerNuevosPokemones(){
     crearListaPokemones(pokemones)
     })
 }
-
 export function obtenerPokemonesAnteriores(){
     if(offset === 0){
         () => {}
