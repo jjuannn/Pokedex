@@ -17,7 +17,6 @@ export function cargarDataPokemones(nombre){
     fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`)
     .then(rta => rta.json())
     .then(rtaJSON  => {
-        const { weight: peso, height: altura, name: nombre, types: tipos } = rtaJSON
         actualizarInformacion(rtaJSON)                
     })
 }
