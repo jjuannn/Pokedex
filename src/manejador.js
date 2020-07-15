@@ -1,8 +1,4 @@
-import {mostrarCantidadPokemones, 
-        crearListaPokemones, 
-        borrarPokemonesAnteriores
-} from "./ui.js"
-
+import { borrarPokemonesAnteriores} from "./ui.js"
 import { obtenerPaginaSiguiente, obtenerPaginaAnterior} from "./api.js"
 
 export let offset = 0
