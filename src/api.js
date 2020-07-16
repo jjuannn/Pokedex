@@ -6,9 +6,9 @@ import {
 } from "./ui.js"
 import { 
     guardarPokemon,
-    parsearDeLocalStorage,
+    buscarPokemonEnLS,
     guardarPagina,
-    parsearPagina
+    buscarPaginaEnLS
 } from "./storage.js"
 import{
     offset
@@ -21,11 +21,12 @@ export function obtenerInfoPokemones(){
         const { count: totalPokemones, results: pokemones} = respuestaJSON
         mostrarCantidadPokemones(totalPokemones)
         crearListaPokemones(pokemones)
+        guardarPagina("0", respuestaJSON)
     })
 }
 export function cargarDataPokemones(nombre){
     try{
-        actualizarInformacion(parsearDeLocalStorage(nombre))
+        actualizarInformacion(buscarPokemonEnLS(nombre))
         console.log("cargo pokemon desde Local")
     }catch(e){
         fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`)
@@ -39,7 +40,7 @@ export function cargarDataPokemones(nombre){
 }
 export function obtenerPaginaSiguiente () {
     try{
-        let paginaLS = parsearPagina(offset)
+        let paginaLS = buscarPaginaEnLS(offset)
         crearListaPokemones(paginaLS.results)
         console.log("cargo pagina siguiente desde LS")
     }catch(e){
@@ -55,7 +56,7 @@ export function obtenerPaginaSiguiente () {
 }
 export function obtenerPaginaAnterior() {
    try{
-        let paginaLS = parsearPagina(offset)
+        let paginaLS = buscarPaginaEnLS(offset)
         crearListaPokemones(paginaLS.results)
         console.log("cargo pagina anterior desde ls")
    } catch(e){
