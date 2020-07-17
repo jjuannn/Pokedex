@@ -1,6 +1,7 @@
 body{
     background-image: url("fondo1.png");
     background-size: cover;
+    overflow: hidden
 }
 h1{
     background-color: red;
