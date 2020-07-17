@@ -38,28 +38,17 @@ export function cargarDataPokemones(nombre){
         })
     }
 }
-export function obtenerPaginaSiguiente () {
-    try{
-        let paginaLS = buscarPaginaEnLS(offset)
-        crearListaPokemones(paginaLS.results)
-        console.log("cargo pagina siguiente desde LS")
-    }catch(e){
-        fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`)
-        .then(respuesta => respuesta.json())
-        .then(respuestaJSON => {
-            const { results: pokemones} = respuestaJSON
-            crearListaPokemones(pokemones)
-            guardarPagina(offset, respuestaJSON)
-            console.log("cargo pagina siguiente desde Api y la guardo")
-        })
-    }
+export function obtenerPaginaSiguienteDesdeAPI() {
+    fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`)
+    .then(respuesta => respuesta.json())
+    .then(respuestaJSON => {
+        const { results: pokemones} = respuestaJSON
+        crearListaPokemones(pokemones)
+        guardarPagina(offset, respuestaJSON)
+        console.log("cargo pagina siguiente desde Api y la guardo")
+    })
 }
-export function obtenerPaginaAnterior() {
-   try{
-        let paginaLS = buscarPaginaEnLS(offset)
-        crearListaPokemones(paginaLS.results)
-        console.log("cargo pagina anterior desde ls")
-   } catch(e){
+export function obtenerPaginaAnteriorDesdeAPI() {
     fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`)
     .then(respuesta => respuesta.json())
     .then(respuestaJSON => {
@@ -68,5 +57,4 @@ export function obtenerPaginaAnterior() {
         guardarPagina(offset, respuestaJSON)
         console.log("cargo pagina anterior desde api y la guardo")
         })
-    }
 }

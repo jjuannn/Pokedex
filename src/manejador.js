@@ -1,12 +1,11 @@
 import { borrarPokemonesAnteriores} from "./ui.js"
-import { obtenerPaginaSiguiente, obtenerPaginaAnterior} from "./api.js"
-
+import { cargarPaginaSiguiente, cargarPaginaAnterior} from "./servicios.js"
 export let offset = 0
 
 export function obtenerNuevosPokemones(){
     offset += 20
     borrarPokemonesAnteriores()
-    obtenerPaginaSiguiente()
+    cargarPaginaSiguiente()
 }
 export function obtenerPokemonesAnteriores(){
     if(offset === 0){
@@ -14,6 +13,6 @@ export function obtenerPokemonesAnteriores(){
     }else{
     offset -= 20
     borrarPokemonesAnteriores()
-    obtenerPaginaAnterior()
+    cargarPaginaAnterior()
 }
 }
