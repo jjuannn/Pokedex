@@ -10,6 +10,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
+    "@types/jest": "^26.0.5",
     "babel-jest": "^26.1.0",
     "eslint": "^7.4.0",
     "eslint-config-standard": "^14.1.1",
@@ -22,7 +23,11 @@
     "yarn": "^1.22.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "http-server -c-1 -p 8080",
+    "test:cypress:dev": "cypress open",
+    "test:ui:dev": "run-p serve test:cypress:dev"
+
   },
   "repository": {
     "type": "git",
