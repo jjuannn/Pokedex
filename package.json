@@ -12,6 +12,7 @@
     "@babel/preset-env": "^7.10.4",
     "@types/jest": "^26.0.5",
     "babel-jest": "^26.1.0",
+    "cypress": "^4.0.1",
     "eslint": "^7.4.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
@@ -24,10 +25,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress-dev": "cypress open",
     "serve": "http-server -c-1 -p 8080",
     "test:cypress:dev": "cypress open",
     "test:ui:dev": "run-p serve test:cypress:dev"
-
   },
   "repository": {
     "type": "git",

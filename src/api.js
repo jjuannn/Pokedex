@@ -1,7 +1,8 @@
 import {
   mostrarCantidadPokemones,
   crearListaPokemones,
-  actualizarInformacion
+  actualizarInformacion,
+  borrarPokemonesAnteriores
 } from './ui.js'
 import {
   guardarPokemon,
@@ -17,6 +18,7 @@ export function obtenerInfoPokemones () {
     .then(respuesta => respuesta.json())
     .then(respuestaJSON => {
       const { count: totalPokemones, results: pokemones } = respuestaJSON
+      borrarPokemonesAnteriores()
       mostrarCantidadPokemones(totalPokemones)
       crearListaPokemones(pokemones)
       guardarPagina('0', respuestaJSON)
