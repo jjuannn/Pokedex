@@ -26,11 +26,11 @@
     "yarn": "^1.22.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "cypress-dev": "cypress open",
     "serve": "http-server -c-1 -p 8080",
     "test:cypress:dev": "cypress open",
-    "test:ui:dev": "run-p serve test:cypress:dev"
+    "test:ui:dev": "run-p serve test:cypress:dev",
+    "test": "jest --collect-coverage"
   },
   "repository": {
     "type": "git",
