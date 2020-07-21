@@ -1,4 +1,4 @@
-import { cargarDataPokemones } from './api.js'
+import { cargarDataPokemones } from '../api/api.js'
 
 export function mostrarCantidadPokemones (cantidadPokemones) {
   document.querySelector('#cantidad-pokemones').textContent = cantidadPokemones

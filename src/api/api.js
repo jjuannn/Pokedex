@@ -3,15 +3,15 @@ import {
   crearListaPokemones,
   actualizarInformacion,
   borrarPokemonesAnteriores
-} from './ui.js'
+} from '../ui/ui.js'
 import {
   guardarPokemon,
   buscarPokemonEnLS,
   guardarPagina
-} from './storage.js'
+} from '../storage/storage.js'
 import {
   offset
-} from './manejador.js'
+} from '../manejador/manejador.js'
 
 export function obtenerInfoPokemones () {
   fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20')

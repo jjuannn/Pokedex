@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
-import { borrarPokemonesAnteriores } from './ui.js'
-import { cargarPaginaSiguiente, cargarPaginaAnterior } from './servicios.js'
+import { borrarPokemonesAnteriores } from '../ui/ui.js'
+import { cargarPaginaSiguiente, cargarPaginaAnterior } from '../servicios/servicios.js'
 export let offset = 0
 
 export function obtenerNuevosPokemones () {

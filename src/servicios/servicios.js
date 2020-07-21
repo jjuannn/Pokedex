@@ -1,7 +1,7 @@
-import { obtenerPaginaSiguienteDesdeAPI, obtenerPaginaAnteriorDesdeAPI } from './api.js'
-import { offset } from './manejador.js'
-import { buscarPaginaEnLS } from './storage.js'
-import { crearListaPokemones } from './ui.js'
+import { obtenerPaginaSiguienteDesdeAPI, obtenerPaginaAnteriorDesdeAPI } from '../api/api.js'
+import { offset } from '../manejador/manejador.js'
+import { buscarPaginaEnLS } from '../storage/storage.js'
+import { crearListaPokemones } from '../ui/ui.js'
 
 export function cargarPaginaSiguiente () {
   try {
