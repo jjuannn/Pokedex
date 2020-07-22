@@ -29,6 +29,7 @@
     "cypress-dev": "cypress open",
     "serve": "http-server -c-1 -p 8080",
     "test:cypress:dev": "cypress open",
+    "test:dev": "jest --watch",
     "test:ui:dev": "run-p serve test:cypress:dev",
     "test": "jest --collect-coverage"
   },
