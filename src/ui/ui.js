@@ -23,7 +23,7 @@ export function borrarPokemonesAnteriores () {
     a.remove()
   })
 }
-export function mostrarInfoPokemones (peso, altura, nombre, vida, ataque, defensa, ataqueEspecial, defensaEspecial, velocidad) {
+function mostrarInfoPokemones (peso, altura, nombre, vida, ataque, defensa, ataqueEspecial, defensaEspecial, velocidad) {
   const $pesoPokemon = document.querySelector('#peso-pokemon')
   $pesoPokemon.textContent = peso
   const $alturaPokemon = document.querySelector('#altura-pokemon')
@@ -43,6 +43,7 @@ export function mostrarInfoPokemones (peso, altura, nombre, vida, ataque, defens
   const $velocidadPokemon = document.querySelector('#velocidad-pokemon')
   $velocidadPokemon.textContent = velocidad
 }
+
 export function actualizarInformacion (rtaJSON) {
   const peso = rtaJSON.weight
   const altura = rtaJSON.height
