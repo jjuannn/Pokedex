@@ -37,7 +37,18 @@ test("crea la lista de pokemones", () => {
 
 test("actualiza la informacion de un pokemon", () => {
     document.body.innerHTML = 
-    '<strong class="tipos">Agua</strong><h5 class="resultadoDatos" id="elementoNombre">Un <strong id="nombre-pokemon">...</strong> salvaje ha aparecido!</h5><img src="" id="foto-pokemon" class="oculto" alt="..."><h5 class="datos">Peso: <strong id="peso-pokemon">¿?</strong></h5><h5 class="datos">Altura: <strong id="altura-pokemon">¿?</strong></h5><h5 class="datos">HP: <strong id="hp-pokemon">¿?</strong></h5><h5 class="datos">Ataque: <strong id="ataque-pokemon">¿?</strong></h5><h5 class="datos">Defensa: <strong id="defensa-pokemon">¿?</strong></h5><h5 class="datos">Velocidad: <strong id="velocidad-pokemon">¿?</strong></h5><h5 class="datos">Ataque Especial: <strong id="ataque-especial">¿?</strong></h5> <h5 class="datos">Defensa Especial: <strong id="defensa-especial">¿?</strong> </h5><h5 class="datos" id="h5tipo">Tipo(s):</h5><div></div>'
+    `<strong class="tipos">Agua</strong>
+    <h5 class="resultadoDatos" id="elementoNombre">Un <strong id="nombre-pokemon">...</strong> salvaje ha aparecido!</h5>
+    <img src="" id="foto-pokemon" class="oculto" alt="...">
+    <h5 class="datos">Peso: <strong id="peso-pokemon">¿?</strong></h5>
+    <h5 class="datos">Altura: <strong id="altura-pokemon">¿?</strong></h5
+    ><h5 class="datos">HP: <strong id="hp-pokemon">¿?</strong></h5>
+    <h5 class="datos">Ataque: <strong id="ataque-pokemon">¿?</strong></h5>
+    <h5 class="datos">Defensa: <strong id="defensa-pokemon">¿?</strong></h5>
+    <h5 class="datos">Velocidad: <strong id="velocidad-pokemon">¿?</strong></h5>
+    <h5 class="datos">Ataque Especial: <strong id="ataque-especial">¿?</strong></h5>
+    <h5 class="datos">Defensa Especial: <strong id="defensa-especial">¿?</strong> </h5>
+    <h5 class="datos" id="h5tipo">Tipo(s):</h5><div></div>`
     const $h5 = document.querySelector('#h5tipo')
     
     const infoPokemon = {"weight":69,"height":7, "name": "bulbasaur", "sprites":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
