@@ -6,7 +6,8 @@ import {
 } from "../ui.js"
 import {
     cuerpo
-} from "./body.js"
+} from "../../../cypress/fixtures/body.js"
+import { cargarDataPokemones } from "../../api/api.js"
 
 const bulbasaur = require('../../../cypress/fixtures/bulbasaur.json')
 const pagina1 = require("../../../cypress/fixtures/pagina1.json")
@@ -26,11 +27,9 @@ test("borra los pokemones", () => {
     expect(document.querySelector("#container").textContent).toBe("")
 })
 
-
 test("crea la lista de pokemones", () => {
     document.body.innerHTML = cuerpo
-    const $listaPokemones = document.querySelector('#lista-pokemones')
-    
+    const $listaPokemones = document.querySelector('#lista-pokemones')    
     crearListaPokemones(pagina1.results)
     const $pokemones = document.getElementsByClassName("list-group-item list-group-item-action l-pokemones")
     expect($pokemones.length).toBe(20)
