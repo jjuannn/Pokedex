@@ -27,5 +27,6 @@ export const cuerpo = `<h2> Hay <strong id="cantidad-pokemones">...</strong> pok
       <img src="" id="foto-pokemon" class="oculto" alt="...">
       <h5 class="resultadoDatos" id="elementoNombre">Un <strong id="nombre-pokemon">...</strong> salvaje ha aparecido!</h5>
     </div>
-  </li>`
+  </li>
+</ul>`
   
