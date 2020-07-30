@@ -3,5 +3,6 @@ module.exports = {
     rootDir: "src",
     coverageDirectory: "../coverage/",
     testPathIgnorePatterns: ["/node_modules/"],
-    coveragePathIgnorePatterns: ["/node_modules/"]
+    coveragePathIgnorePatterns: ["/node_modules/"],
+    setupFilesAfterEnv: ["jest-extended"]
 }

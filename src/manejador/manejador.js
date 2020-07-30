@@ -10,7 +10,7 @@ export function obtenerNuevosPokemones () {
 }
 export function obtenerPokemonesAnteriores () {
   if (offset === 0) {
-    () => {}
+    () => { }
   } else {
     offset -= 20
     borrarPokemonesAnteriores()
