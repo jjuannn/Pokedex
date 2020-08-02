@@ -1,19 +1,20 @@
 /* eslint-disable no-unused-expressions */
 import { borrarPokemonesAnteriores } from '../ui/ui.js'
 import { cargarPaginaSiguiente, cargarPaginaAnterior } from '../servicios/servicios.js'
+import { crearListaPokemones } from "../ui/ui.js"
 export let offset = 0
 
-export function obtenerNuevosPokemones () {
+export async function obtenerNuevosPokemones () {
   offset += 20
   borrarPokemonesAnteriores()
-  cargarPaginaSiguiente()
+  crearListaPokemones(await cargarPaginaSiguiente())
 }
-export function obtenerPokemonesAnteriores () {
+export async function obtenerPokemonesAnteriores () {
   if (offset === 0) {
     () => { }
   } else {
     offset -= 20
     borrarPokemonesAnteriores()
-    cargarPaginaAnterior()
+    crearListaPokemones(await cargarPaginaAnterior())
   }
 }

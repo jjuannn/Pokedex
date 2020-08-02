@@ -1,7 +1,6 @@
 import {
   mostrarCantidadPokemones,
   crearListaPokemones,
-  actualizarInformacion,
   borrarPokemonesAnteriores
 } from '../ui/ui.js'
 import {
@@ -14,47 +13,39 @@ import {
 } from '../manejador/manejador.js'
 
 export function obtenerInfoPokemones () {
-  fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20')
+  return fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20')
     .then(respuesta => respuesta.json())
     .then(respuestaJSON => {
-      const { count: totalPokemones, results: pokemones } = respuestaJSON
-      borrarPokemonesAnteriores()
-      mostrarCantidadPokemones(totalPokemones)
-      crearListaPokemones(pokemones)
       guardarPagina('0', respuestaJSON)
+      const respuesta = respuestaJSON
+      return respuesta
     })
 }
-export function cargarDataPokemones (nombre) {
-  try {
-    actualizarInformacion(buscarPokemonEnLS(nombre))
-    console.log('cargo pokemon desde Local')
-  } catch (e) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`)
+export function buscarPokemonEnApi(nombre) {
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`)
       .then(rta => rta.json())
       .then(rtaJSON => {
-        actualizarInformacion(rtaJSON)
         guardarPokemon(rtaJSON)
-        console.log('Cargo pokemon desde Api y lo guardo')
+        const respuestaPokemon = rtaJSON
+        return respuestaPokemon
       })
-  }
 }
 export function obtenerPaginaSiguienteDesdeAPI () {
-  fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`)
+  return fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`)
     .then(respuesta => respuesta.json())
     .then(respuestaJSON => {
       const { results: pokemones } = respuestaJSON
-      crearListaPokemones(pokemones)
       guardarPagina(offset, respuestaJSON)
-      console.log('cargo pagina siguiente desde Api y la guardo')
+      return pokemones
     })
+
 }
 export function obtenerPaginaAnteriorDesdeAPI () {
-  fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`)
+  return fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`)
     .then(respuesta => respuesta.json())
     .then(respuestaJSON => {
       const { results: pokemones } = respuestaJSON
-      crearListaPokemones(pokemones)
       guardarPagina(offset, respuestaJSON)
-      console.log('cargo pagina anterior desde api y la guardo')
+      return pokemones
     })
 }

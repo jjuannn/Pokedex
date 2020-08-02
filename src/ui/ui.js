@@ -1,18 +1,28 @@
-import { cargarDataPokemones } from '../api/api.js'
+import { cargarDataPokemones } from '../servicios/servicios.js'
+import { buscarPokemonEnLS } from '../storage/storage.js'
+import { buscarPokemonEnApi, obtenerInfoPokemones } from '../api/api.js'
 
+
+export async function inicializar(){
+  const infoPokemones = await obtenerInfoPokemones()
+  borrarPokemonesAnteriores()
+  mostrarCantidadPokemones(infoPokemones.count)
+  crearListaPokemones(infoPokemones.results)
+
+}
 export function mostrarCantidadPokemones (cantidadPokemones) {
   document.querySelector('#cantidad-pokemones').textContent = cantidadPokemones
 }
-export function crearListaPokemones (pokemones) {
+export async function crearListaPokemones (pokemones) {
   const $listaPokemones = document.querySelector('#lista-pokemones')
-  pokemones.forEach(pokemon => {
+    pokemones.forEach(pokemon => {
     const { name: nombre } = pokemon
     const $link = document.createElement('a')
     $link.textContent = nombre
     $link.setAttribute('href', '#')
     $link.className = 'list-group-item list-group-item-action l-pokemones'
-    $link.addEventListener('click', () => {
-      cargarDataPokemones(nombre)
+    $link.addEventListener('click', async () => {
+      actualizarInformacion(await cargarDataPokemones(nombre))
     })
     $listaPokemones.appendChild($link)
   })
@@ -44,7 +54,7 @@ function mostrarInfoPokemones (peso, altura, nombre, vida, ataque, defensa, ataq
   $velocidadPokemon.textContent = velocidad
 }
 
-export function actualizarInformacion (rtaJSON) {
+export function actualizarInformacion(rtaJSON) {
   const peso = rtaJSON.weight
   const altura = rtaJSON.height
   const nombre = rtaJSON.name
