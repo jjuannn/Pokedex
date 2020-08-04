@@ -3,10 +3,10 @@ describe("testea la pokedex", () => {
         let fetchPolyfill
 
    before( () => {
-        const polyfillUrl = 'https://unpkg.com/unfetch/dist/unfetch.umd.js'
+    const polyfillUrl = 'https://unpkg.com/unfetch/dist/unfetch.umd.js'
         
-        cy.request(polyfillUrl)
-        .then((response) => {
+    cy.request(polyfillUrl)
+      .then((response) => {
         fetchPolyfill = response.body
       });
     
@@ -14,7 +14,7 @@ describe("testea la pokedex", () => {
       cy.viewport(1366, 768)
     })
     cy.server();
-    cy.route('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20', 'fixture:pagina1')
+    cy.route('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20', 'fixture:pagina1')
       .as('obtenerPrimeraPagina')
     
     cy.visit('http://127.0.0.1:8080', {
@@ -68,7 +68,7 @@ describe("testea la pokedex", () => {
     cy.server()
     cy.route('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20', 'fixture:pagina2')
       .as("obtenerSegundaPagina")
-    cy.route('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20', 'fixture:pagina1')
+    cy.route('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20', 'fixture:pagina1')
       .as('obtenerPrimeraPagina')
     
     cy.get("#pokemones-next").click()
