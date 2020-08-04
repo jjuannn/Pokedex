@@ -8,7 +8,6 @@ export async function inicializar(){
   borrarPokemonesAnteriores()
   mostrarCantidadPokemones(infoPokemones.count)
   crearListaPokemones(infoPokemones.results)
-
 }
 export function mostrarCantidadPokemones (cantidadPokemones) {
   document.querySelector('#cantidad-pokemones').textContent = cantidadPokemones
@@ -21,6 +20,7 @@ export async function crearListaPokemones (pokemones) {
     $link.textContent = nombre
     $link.setAttribute('href', '#')
     $link.className = 'list-group-item list-group-item-action l-pokemones'
+    $link.classList.add(nombre)
     $link.addEventListener('click', async () => {
       actualizarInformacion(await cargarDataPokemones(nombre))
     })
