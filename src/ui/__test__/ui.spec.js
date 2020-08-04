@@ -14,14 +14,6 @@ import { cargarDataPokemones, obtenerInfoPokemones } from "../../api/api.js"
 const bulbasaur = require('../../../cypress/fixtures/bulbasaur.json')
 const pagina1 = require("../../../cypress/fixtures/pagina1.json")
 
-test("inicializa la pokedex", () => {
-    const inicializar = jest.fn()
-    
-    inicializar()
-
-    expect(inicializar).toHaveBeenCalledTimes(1)
-})
-
 test("actualiza la cantidad de pokemones", () => {
     document.body.innerHTML = cuerpo
     mostrarCantidadPokemones(500)

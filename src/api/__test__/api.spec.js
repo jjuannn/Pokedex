@@ -2,9 +2,8 @@ import {
     obtenerInfoPokemones,
     obtenerPaginaAnteriorDesdeAPI,
     obtenerPaginaSiguienteDesdeAPI, 
-    cargarDataPokemones
+    buscarPokemonEnApi
 } from "../api.js"
-import { actualizarInformacion, guardarPokemon} from "../../ui/ui.js"
 
 const pagina1 = require ("../../../cypress/fixtures/pagina1.json")
 const pagina2 = require("../../../cypress/fixtures/pagina2.json")
@@ -21,7 +20,6 @@ test("obtiene la info de los pokemones", () => {
   }));
   
   obtenerInfoPokemones()
-  // preguntar por las funciones dentro de obtenerInfoPokemones
   expect(global.fetch).toHaveBeenCalledTimes(1)
 })
 
@@ -51,8 +49,7 @@ test("obtiene la pagina anterior", () => {
   expect(global.fetch).toHaveBeenCalledTimes(1)
 })
 
-test("carga la info de los pokemones", () => {
-
+test("obtiene la info de un pokemon", () => {
   global.fetch = jest.fn()
     .mockImplementation(() => new Promise((resolve) => {
       const jsonPromise = new Promise((r) => {
@@ -61,8 +58,6 @@ test("carga la info de los pokemones", () => {
       resolve({ json: () => jsonPromise });
   }));
 
-  cargarDataPokemones("bulbasaur")
+  buscarPokemonEnApi("bulbasaur")
   expect(global.fetch).toHaveBeenCalledTimes(1)
-
-  
 })

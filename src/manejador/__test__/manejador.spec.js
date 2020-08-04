@@ -17,10 +17,13 @@ it("obtiene la pagina siguiente", () => {
       resolve({ json: () => jsonPromise });
   }));
 
+  const borrarPokemonesAnteriores = jest.fn( () => { } )
+
   obtenerNuevosPokemones()
   expect(global.fetch).toBeCalledTimes(1)
   expect(global.fetch).resolves
   expect(offset).toBe(20)
+  //expect(borrarPokemonesAnteriores).toBeCalled()
 })
 
 it("obtiene la pagina anterior", () => {
@@ -44,20 +47,6 @@ it("obtiene la pagina anterior", () => {
   expect(offset).toBe(0)
 })
 
-test("intenta obtener pagina anterior con offset 0", () => {
-    document.body.innerHTML = cuerpoConListaCreada
-
-    global.fetch = jest.fn()
-    .mockImplementation(() => new Promise((resolve) => {
-      const jsonPromise = new Promise((r) => {
-        r(pagina1);
-      });
-      resolve({ json: () => jsonPromise });
-  }));
-
-  obtenerPokemonesAnteriores()
-  expect(offset).toBe(0)
-})
 // PREGUNTAR PORQUE LAS FUNCIONES DE obtenerPokemonesAnteriores NO SE PUEDEN CHEQUEAR
 // MOCK ?¿?¿?¿?
 // TERMINAR PORQUE POKEMONES.length DA 0
