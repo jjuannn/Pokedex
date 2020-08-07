@@ -30,18 +30,6 @@ export async function cargarDataPokemones(nombre){
     return pokemonBuscadoEnApi
   }
 }
-
-function buscarInfoPokemones(nombre){
-  try{
-    const pokemonDeLocalStorage = buscarPokemonEnLS(nombre)
-    mapearPokemon(pokemonDeLocalStorage)
-    return pokemonDeLocalStorage
-  } catch(e){
-    const pokemonDeAPI = buscarPokemonEnApi(nombre)
-    mapearPokemon(pokemonDeAPI)
-    return pokemonDeAPI
-  }
-}
 export async function cargarPaginaAnterior () {
   try {
     const paginaLS = buscarPaginaEnLS(offset)
