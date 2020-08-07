@@ -2,6 +2,7 @@ import { obtenerPaginaSiguienteDesdeAPI, obtenerPaginaAnteriorDesdeAPI, buscarPo
 import { offset } from '../manejador/manejador.js'
 import { buscarPaginaEnLS, buscarPokemonEnLS, guardarPokemon } from '../storage/storage.js'
 import { crearListaPokemones } from '../ui/ui.js'
+import { mapearPokemon } from '../entidades/pokemones.js'
 
 export async function cargarPaginaSiguiente () {
   try {
@@ -20,11 +21,25 @@ export async function cargarDataPokemones(nombre){
   const pokemonDeLocalStorage = buscarPokemonEnLS(nombre)
   if(pokemonDeLocalStorage){
     console.log("lo cargo desde ls")
+    const clasePokemon = mapearPokemon(pokemonDeLocalStorage) 
     return pokemonDeLocalStorage
   } else {
     const pokemonBuscadoEnApi = await buscarPokemonEnApi(nombre)
+    const pokemonClase = mapearPokemon(pokemonBuscadoEnApi)
     console.log("lo cargo desde api")
     return pokemonBuscadoEnApi
+  }
+}
+
+function buscarInfoPokemones(nombre){
+  try{
+    const pokemonDeLocalStorage = buscarPokemonEnLS(nombre)
+    mapearPokemon(pokemonDeLocalStorage)
+    return pokemonDeLocalStorage
+  } catch(e){
+    const pokemonDeAPI = buscarPokemonEnApi(nombre)
+    mapearPokemon(pokemonDeAPI)
+    return pokemonDeAPI
   }
 }
 export async function cargarPaginaAnterior () {

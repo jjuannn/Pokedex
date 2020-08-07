@@ -1,13 +1,12 @@
 import { cargarDataPokemones } from '../servicios/servicios.js'
 import { buscarPokemonEnLS } from '../storage/storage.js'
 import { buscarPokemonEnApi, obtenerInfoPokemones } from '../api/api.js'
-
-
 export async function inicializar(){
   const infoPokemones = await obtenerInfoPokemones()
   borrarPokemonesAnteriores()
   mostrarCantidadPokemones(infoPokemones.count)
   crearListaPokemones(infoPokemones.results)
+  console.log(infoPokemones.results)
 }
 export function mostrarCantidadPokemones (cantidadPokemones) {
   document.querySelector('#cantidad-pokemones').textContent = cantidadPokemones
