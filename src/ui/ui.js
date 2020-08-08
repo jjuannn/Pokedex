@@ -1,4 +1,4 @@
-import { cargarDataPokemones } from '../servicios/servicios.js'
+import { cargarDataPokemones } from '../servicios/2.js'
 import { buscarPokemonEnLS } from '../storage/storage.js'
 import { buscarPokemonEnApi, obtenerInfoPokemones } from '../api/api.js'
 export async function inicializar(){
