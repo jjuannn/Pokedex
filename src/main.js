@@ -1,21 +1,18 @@
-import { obtenerInfoPokemones } from './api/api.js'
+import {obtenerInfoPokemones} from "./api.js"
 
-import { obtenerNuevosPokemones, obtenerPokemonesAnteriores } from './manejador/manejador.js'
+import {obtenerNuevosPokemones, obtenerPokemonesAnteriores} from "./manejador.js"
 
-import { inicializar } from "./ui/ui.js"
+const botonNext = document.querySelector("#pokemones-next")
+const botonPrev = document.querySelector("#pokemones-prev")
 
-const botonNext = document.querySelector('#pokemones-next')
-const botonPrev = document.querySelector('#pokemones-prev')
+obtenerInfoPokemones()
 
-// meter en inicializar: obtenerInfoPokemones()
-inicializar()
-
-botonPrev.addEventListener('click', () => {
-  obtenerPokemonesAnteriores()
+botonPrev.addEventListener( "click", () => {
+    obtenerPokemonesAnteriores()
 })
 
-botonNext.addEventListener('click', () => {
-  obtenerNuevosPokemones()
+botonNext.addEventListener( "click", () => {
+    obtenerNuevosPokemones()
 })
 
 obtenerInfoPokemones()
