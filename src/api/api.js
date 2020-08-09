@@ -11,23 +11,21 @@ import {
 import {
   offset
 } from '../manejador/manejador.js'
-import { nuevaPagina } from '../mapeador/mapeador.js'
 
 export function obtenerInfoPokemones () {
   return fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20')
     .then(respuesta => respuesta.json())
     .then(respuestaJSON => {
-      const respuestaApi = respuestaJSON
-      const primeraPagina = nuevaPagina(respuestaApi)
-      console.log(primeraPagina)
-      guardarPagina("0", primeraPagina)
-      return primeraPagina
+      guardarPagina('0', respuestaJSON)
+      const respuesta = respuestaJSON
+      return respuesta
     })
 }
 export function buscarPokemonEnApi(nombre) {
     return fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`)
       .then(rta => rta.json())
       .then(rtaJSON => {
+        guardarPokemon(rtaJSON)
         const respuestaPokemon = rtaJSON
         return respuestaPokemon
       })
@@ -37,7 +35,8 @@ export function obtenerPaginaSiguienteDesdeAPI () {
     .then(respuesta => respuesta.json())
     .then(respuestaJSON => {
       const { results: pokemones } = respuestaJSON
-      return respuestaJSON
+      guardarPagina(offset, respuestaJSON)
+      return pokemones
     })
 
 }
@@ -46,6 +45,7 @@ export function obtenerPaginaAnteriorDesdeAPI () {
     .then(respuesta => respuesta.json())
     .then(respuestaJSON => {
       const { results: pokemones } = respuestaJSON
-      return respuestaJSON
+      guardarPagina(offset, respuestaJSON)
+      return pokemones
     })
 }
