@@ -5,11 +5,11 @@ import { buscarPokemonEnApi, obtenerInfoPokemones } from '../api/api.js'
 export async function inicializar(){
   const infoPokemones = await obtenerInfoPokemones()
   borrarPokemonesAnteriores()
-  mostrarCantidadPokemones(infoPokemones)
+  mostrarCantidadPokemones(infoPokemones.totalPokemones)
   crearListaPokemones(infoPokemones.listaPokemones)
 }
 export function mostrarCantidadPokemones (cantidadPokemones) {
-  document.querySelector('#cantidad-pokemones').textContent = cantidadPokemones.count
+  document.querySelector('#cantidad-pokemones').textContent = cantidadPokemones
 }
 export async function crearListaPokemones (pokemones) {
   const $listaPokemones = document.querySelector('#lista-pokemones')
