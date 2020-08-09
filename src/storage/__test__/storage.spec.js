@@ -16,7 +16,7 @@ test("prueba guardar la info de una pagina", () => {
 
     expect(paginaGuardadaEnLocal).toContainAllKeys(["count", "next", "previous", "results"])
 })
-
+/*
 test("prueba guardar la info de un pokemon", () => {
     guardarPokemon(bulbasaur)
 
@@ -30,11 +30,11 @@ test("busca la pagina en local storage", () => {
     const paginaEnLocalStorage = buscarPaginaEnLS("20")
 
     expect(paginaEnLocalStorage).toEqual(pagina1)
-})
-
+})*/
+/*
 test("busca pokemon en local storage", () => {
     
     const pokemonGuardadoEnLocal = buscarPokemonEnLS("bulbasaur")
 
     expect(pokemonGuardadoEnLocal).toEqual(bulbasaur)
-})
+})*/

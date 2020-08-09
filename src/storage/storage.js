@@ -1,10 +1,10 @@
 export function guardarPokemon (pokemon) {
-  localStorage.setItem(pokemon.name, JSON.stringify(pokemon))
+  localStorage.setItem(pokemon.nombre, JSON.stringify(pokemon))
 }
 export function buscarPokemonEnLS (pokemon) {
   return JSON.parse(localStorage.getItem(pokemon))
 }
-export function guardarPagina (offset, respuesta) {
+export function guardarPagina(offset, respuesta) {
   localStorage.setItem(offset, JSON.stringify(respuesta))
 }
 export function buscarPaginaEnLS (respuesta) {

@@ -1,15 +1,15 @@
 import { cargarDataPokemones } from '../servicios/servicios.js'
 import { buscarPokemonEnLS } from '../storage/storage.js'
 import { buscarPokemonEnApi, obtenerInfoPokemones } from '../api/api.js'
+
 export async function inicializar(){
   const infoPokemones = await obtenerInfoPokemones()
   borrarPokemonesAnteriores()
-  mostrarCantidadPokemones(infoPokemones.count)
-  crearListaPokemones(infoPokemones.results)
-  console.log(infoPokemones.results)
+  mostrarCantidadPokemones(infoPokemones)
+  crearListaPokemones(infoPokemones.listaPokemones)
 }
 export function mostrarCantidadPokemones (cantidadPokemones) {
-  document.querySelector('#cantidad-pokemones').textContent = cantidadPokemones
+  document.querySelector('#cantidad-pokemones').textContent = cantidadPokemones.count
 }
 export async function crearListaPokemones (pokemones) {
   const $listaPokemones = document.querySelector('#lista-pokemones')
@@ -54,17 +54,17 @@ function mostrarInfoPokemones (peso, altura, nombre, vida, ataque, defensa, ataq
 }
 
 export function actualizarInformacion(rtaJSON) {
-  const peso = rtaJSON.weight
-  const altura = rtaJSON.height
-  const nombre = rtaJSON.name
-  const $foto = Object.values(rtaJSON.sprites)[4]
-  const hp = Object.values(rtaJSON.stats[0])[0]
-  const ataque = Object.values(rtaJSON.stats[1])[0]
-  const defensa = Object.values(rtaJSON.stats[2])[0]
-  const ataqueEspecial = Object.values(rtaJSON.stats[3])[0]
-  const defensaEspecial = Object.values(rtaJSON.stats[4])[0]
-  const velocidad = Object.values(rtaJSON.stats[5])[0]
-  const tipoPokemon = rtaJSON.types
+  const peso = rtaJSON.peso
+  const altura = rtaJSON.altura
+  const nombre = rtaJSON.nombre
+  const $foto = rtaJSON.fotos
+  const hp = Object.values(rtaJSON.estadisticas[0])[0]
+  const ataque = Object.values(rtaJSON.estadisticas[1])[0]
+  const defensa = Object.values(rtaJSON.estadisticas[2])[0]
+  const ataqueEspecial = Object.values(rtaJSON.estadisticas[3])[0]
+  const defensaEspecial = Object.values(rtaJSON.estadisticas[4])[0]
+  const velocidad = Object.values(rtaJSON.estadisticas[5])[0]
+  const tipoPokemon = rtaJSON.tipos
   const $strongs = document.querySelectorAll('.tipos')
   $strongs.forEach((tipo) => {
     tipo.remove()

@@ -34,7 +34,7 @@ test("crea la lista de pokemones", () => {
     const $pokemones = document.querySelectorAll(".l-pokemones")
     expect($pokemones.length).toBe(20)
 })
-
+/*
 test("actualiza la informacion de un pokemon", () => {
     document.body.innerHTML = cuerpo
     
@@ -49,4 +49,4 @@ test("actualiza la informacion de un pokemon", () => {
     expect(document.querySelector("#velocidad-pokemon").textContent).toBe("45")
     expect(document.querySelector("#ataque-especial").textContent).toBe("65")
     expect(document.querySelector("#defensa-especial").textContent).toBe("65")
-})
+})*/
