@@ -26,7 +26,7 @@ export async function cargarDataPokemones(nombre){
     console.log("lo cargo desde ls")
     return pokemon
   } else {
-    let respuestaApi = await buscarPokemonEnApi(nombre)
+    const respuestaApi = await buscarPokemonEnApi(nombre)
     pokemon = nuevoPokemon(respuestaApi)
     guardarPokemon(pokemon)
     console.log("lo cargo desde api")
