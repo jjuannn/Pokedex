@@ -7,7 +7,6 @@ import { inicializar } from "./ui/ui.js"
 const botonNext = document.querySelector('#pokemones-next')
 const botonPrev = document.querySelector('#pokemones-prev')
 
-// meter en inicializar: obtenerInfoPokemones()
 inicializar()
 
 botonPrev.addEventListener('click', () => {
