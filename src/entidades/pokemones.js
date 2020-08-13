@@ -1,10 +1,16 @@
 export class Pokemon{
-    constructor(pokemon){
-        this.nombre = pokemon.name
-        this.altura = pokemon.height
-        this.estadisticas = pokemon.stats
-        this.tipos = pokemon.types
-        this.fotos = pokemon.sprites.front_default
-        this.peso = pokemon.weight
+    constructor(nombre, altura, tipos = [], foto, peso, hp, ataque, defensa, ataqueEspecial, defensaEspecial, velocidad){
+        this.nombre = nombre
+        this.altura = altura
+        this.tipos = tipos
+        this.foto = foto
+        this.peso = peso
+        this.hp = hp
+        this.ataque = ataque
+        this.defensa = defensa
+        this.ataqueEspecial = ataqueEspecial
+        this.defensaEspecial = defensaEspecial
+        this.velocidad = velocidad
     }
+    
 }
