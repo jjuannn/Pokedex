@@ -32,7 +32,5 @@ export async function cargarPokemon(nombre){
   return pokemon
 }
 export async function cargarPaginaAnterior () {
-    const paginaLS = buscarPaginaEnLocalStorage(offset)
-    return paginaLS
+    return buscarPaginaEnLocalStorage(offset)
 }
-
