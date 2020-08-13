@@ -1,8 +1,8 @@
 export class Pagina{
-    constructor(respuestaPagina){
-        this.totalPokemones = respuestaPagina.count
-        this.proximaPagina = respuestaPagina.next
-        this.paginaSiguiente = respuestaPagina.previous
-        this.listaPokemones = respuestaPagina.results
+    constructor(totalPokemones, proximaPagina, paginaAnterior, listaPokemones){
+        this.totalPokemones = totalPokemones
+        this.proximaPagina = proximaPagina
+        this.paginaAnterior = paginaAnterior
+        this.listaPokemones = listaPokemones
     }
 }
