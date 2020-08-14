@@ -1,5 +1,3 @@
-import { obtenerInfoPokemones } from './api/api.js'
-
 import { obtenerNuevosPokemones, obtenerPokemonesAnteriores } from './manejador/manejador.js'
 
 import { inicializar } from "./ui/ui.js"
@@ -17,4 +15,3 @@ botonNext.addEventListener('click', () => {
   obtenerNuevosPokemones()
 })
 
-obtenerInfoPokemones()
