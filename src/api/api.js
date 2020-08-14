@@ -5,13 +5,11 @@ import { nuevaPagina } from '../mapeador/mapeador.js'
 
 const baseURL = "https://pokeapi.co/api/v2/pokemon/"
 
-export function obtenerInfoPokemones () {
+export function obtenerPrimerPaginaDesdeAPI () {
   return fetch(`${baseURL}?offset=0&limit=20`)
     .then(respuesta => respuesta.json())
     .then(respuestaApi => {
-      const primeraPagina = nuevaPagina(respuestaApi)
-      guardarPagina("0", primeraPagina)
-      return primeraPagina
+      return respuestaApi
     })
 }
 export function buscarPokemonEnApi(nombre) {
