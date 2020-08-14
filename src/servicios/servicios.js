@@ -1,4 +1,4 @@
-import { obtenerPaginaSiguienteDesdeAPI,  buscarPokemonEnApi } from '../api/api.js'
+import { obtenerPaginaSiguienteDesdeAPI,  buscarPokemonEnApi, obtenerPrimerPaginaDesdeAPI } from '../api/api.js'
 import { offset } from '../manejador/manejador.js'
 import {
     buscarPaginaEnLocalStorage,
@@ -8,16 +8,30 @@ import {
 } from '../storage/storage.js'
 import { nuevoPokemon, nuevaPagina} from '../mapeador/mapeador.js'
 
+export async function obtenerPrimerPagina(){
+    let primerPagina
+    primerPagina = buscarPaginaEnLocalStorage("0")
+    if(primerPagina){
+      return primerPagina
+    } else {
+      const respuestaApi = await obtenerPrimerPaginaDesdeAPI()
+      primerPagina = nuevaPagina(respuestaApi)
+      guardarPagina("0", primerPagina)
+    }
+    return primerPagina
+}
+
 export async function cargarPaginaSiguiente () {
-  try {
-    const paginaLS = buscarPaginaEnLS(offset)
-    return paginaLS
-  } catch (e) {
+  let siguientePagina
+  siguientePagina = buscarPaginaEnLocalStorage(offset)
+    if(siguientePagina){
+      return siguientePagina
+    } else{
     const respuestaApi = await obtenerPaginaSiguienteDesdeAPI(offset)
-    const proximaPagina = nuevaPagina(respuestaApi)
-    guardarPagina(offset, proximaPagina)
-    return proximaPagina
-  }  
+    siguientePagina = nuevaPagina(respuestaApi)
+    guardarPagina(offset, siguientePagina) 
+  } 
+  return siguientePagina 
 }
 export async function cargarPokemon(nombre){
   let pokemon
