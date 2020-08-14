@@ -1,6 +1,10 @@
 body{
+    position: fixed;
     background-image: url("fondo1.png");
     background-size: cover;
+    overflow-x: hidden;
+    width: 100%;
+
 }
 h1{
     background-color: red;

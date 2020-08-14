@@ -1,0 +1,48 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "pokedex",
+  "main": "main.js",
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@types/cypress": "^1.1.3",
+    "@types/jest": "^26.0.5",
+    "babel-jest": "^26.1.0",
+    "cypress": "^4.0.1",
+    "eslint": "^7.4.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.18.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^26.1.0",
+    "jest-extended": "^0.11.5",
+    "npm-run-all": "^4.1.5",
+    "yarn": "^1.22.4"
+  },
+  "scripts": {
+    "cypress-dev": "cypress open",
+    "server": "http-server -c-1 -p 8080",
+    "test:cypress:dev": "cypress open",
+    "test:dev": "jest --watch",
+    "test:ui:dev": "run-p server test:cypress:dev",
+    "test": "jest --collect-coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjuannn/pokedex.git"
+  },
+  "author": "juan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjuannn/pokedex/issues"
+  },
+  "homepage": "https://github.com/jjuannn/pokedex#readme"
+}
