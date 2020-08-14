@@ -1,29 +1,24 @@
-import { cargarPokemon } from '../servicios/servicios.js'
-import { buscarPokemonEnLocalStorage } from '../storage/storage.js'
-import { buscarPokemonEnApi, obtenerInfoPokemones } from '../api/api.js'
+import { cargarPokemon, obtenerPrimerPagina } from '../servicios/servicios.js'
 
 export async function inicializar(){
-  const infoPokemones = await obtenerInfoPokemones()
+  const primerPagina = await obtenerPrimerPagina()
   borrarPokemonesAnteriores()
-  mostrarCantidadPokemones(infoPokemones.totalPokemones)
-  crearListaPokemones(infoPokemones)
+  mostrarCantidadPokemones(primerPagina.totalPokemones)
+  crearListaPokemones(primerPagina)
 }
 export function mostrarCantidadPokemones (cantidadPokemones) {
   document.querySelector('#cantidad-pokemones').textContent = cantidadPokemones
 }
 export async function crearListaPokemones(pokemones) {
   const $listaPokemones = document.querySelector('#lista-pokemones')
-  // PREGUNTAR SI listadoPokemones ESTA BIEN
-  const listadoPokemones = pokemones.listaPokemones
-    listadoPokemones.forEach(pokemon => {
-    const { name: nombre } = pokemon
+    pokemones.listaPokemones.forEach(pokemon => {
     const $link = document.createElement('a')
-    $link.textContent = nombre
+    $link.textContent = pokemon.nombre.name
     $link.setAttribute('href', '#')
     $link.className = 'list-group-item list-group-item-action l-pokemones'
-    $link.classList.add(nombre)
+    $link.classList.add(pokemon.nombre.name)
     $link.addEventListener('click', async () => {
-      actualizarInformacion(await cargarPokemon(nombre))
+      actualizarInformacion(await cargarPokemon(pokemon.nombre.name))
     })
     $listaPokemones.appendChild($link)
   })
