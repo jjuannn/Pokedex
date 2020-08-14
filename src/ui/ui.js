@@ -3,8 +3,8 @@ import { cargarPokemon, obtenerPrimerPagina } from '../servicios/servicios.js'
 export async function inicializar(){
   const primerPagina = await obtenerPrimerPagina()
   borrarPokemonesAnteriores()
-  mostrarCantidadPokemones(primerPagina.totalPokemones)
-  crearListaPokemones(primerPagina)
+  mostrarCantidadPokemones(await primerPagina.totalPokemones)
+  crearListaPokemones(await primerPagina)
 }
 export function mostrarCantidadPokemones (cantidadPokemones) {
   document.querySelector('#cantidad-pokemones').textContent = cantidadPokemones
@@ -12,13 +12,14 @@ export function mostrarCantidadPokemones (cantidadPokemones) {
 export async function crearListaPokemones(pokemones) {
   const $listaPokemones = document.querySelector('#lista-pokemones')
     pokemones.listaPokemones.forEach(pokemon => {
+    const { name: nombre } = pokemon
     const $link = document.createElement('a')
-    $link.textContent = pokemon.nombre.name
+    $link.textContent = nombre
     $link.setAttribute('href', '#')
     $link.className = 'list-group-item list-group-item-action l-pokemones'
-    $link.classList.add(pokemon.nombre.name)
+    $link.classList.add(nombre)
     $link.addEventListener('click', async () => {
-      actualizarInformacion(await cargarPokemon(pokemon.nombre.name))
+      actualizarInformacion(await cargarPokemon(nombre))
     })
     $listaPokemones.appendChild($link)
   })

@@ -12,5 +12,4 @@ export class Pokemon{
         this.defensaEspecial = defensaEspecial
         this.velocidad = velocidad
     }
-    
 }
