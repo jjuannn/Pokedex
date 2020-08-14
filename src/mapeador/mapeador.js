@@ -28,5 +28,7 @@ export function nuevaPagina(respuesta){
         results: listaPokemones
     } = respuesta
     
-    return new Pagina(totalPokemones, proximaPagina, paginaAnterior, listaPokemones)
+    return new Pagina(totalPokemones, proximaPagina, paginaAnterior,
+        listaPokemones.map((pokemon) => new Pokemon(pokemon))
+    )
 }
